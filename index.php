@@ -1,3 +1,8 @@
+<?php
+    require 'includes/funciones.php';
+    $resultado = obtener_servicios();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,7 +24,13 @@
                 <h2>Servicios</h2>
                 <p class="text-center">Elige tus Servicios a Continuación</p>
                 <div id="servicios" class="listado-servicios">
-                    
+                    <?php
+                    while ($servicio = mysqli_fetch_assoc($resultado)) {?>
+                    <div class="servicio">
+                        <p class="nombre-servicio"><?php echo $servicio['nombre'] ?></p>
+                        <p class="precio-servicio">$<?php echo $servicio['precio'] ?></p>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
